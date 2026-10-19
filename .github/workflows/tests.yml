@@ -1,0 +1,28 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install CPU dependencies
+        run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install torch_geometric numpy pandas scipy matplotlib networkx pytest nbformat
+      - name: Fetch benchmark data
+        run: bash scripts/fetch_data.sh
+      - name: Validate dataset
+        run: python scripts/validate_dataset.py > /dev/null
+      - name: Unit and mathematical validation tests
+        run: python -m pytest -q
+      - name: Notebook is valid JSON and in sync with the package
+        run: |
+          cp notebooks/NashGAT_MARL_Research.ipynb /tmp/nb_committed.ipynb
+          python scripts/build_notebook.py
+          python -c "import nbformat; nbformat.validate(nbformat.read('notebooks/NashGAT_MARL_Research.ipynb', 4))"
+          diff <(python -c "import nbformat;print('\n'.join(c.source for c in nbformat.read('/tmp/nb_committed.ipynb',4).cells))") \
+               <(python -c "import nbformat;print('\n'.join(c.source for c in nbformat.read('notebooks/NashGAT_MARL_Research.ipynb',4).cells))")

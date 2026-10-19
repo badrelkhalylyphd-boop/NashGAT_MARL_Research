@@ -1,0 +1,11 @@
+# benchmark data is downloaded by scripts/fetch_data.sh (not redistributed)
+data/raw/
+# released results are kept; run logs are not
+results/**/log*.txt
+nb_work/
+notebooks/*.executed_local.ipynb
+# model checkpoints of the released runs are kept (results/traffic/**/model.pt)
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/

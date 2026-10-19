@@ -1,0 +1,30 @@
+[project]
+name = "nashgat"
+version = "0.1.0"
+description = "NashGAT-MARL: graph-attention MARL with an exploitability-gap regulariser (research code)"
+requires-python = ">=3.10"
+authors = [
+  { name = "Badr El Khalyly", email = "badrelkhalylyphd@gmail.com" },
+  { name = "Zouhair Ibn Batouta", email = "Zouhair.ibnbatouta@gmail.com" },
+]
+dependencies = [
+  "numpy>=1.26",
+  "torch>=2.2",
+  "torch_geometric>=2.5",
+  "pandas>=2.0",
+  "matplotlib>=3.8",
+  "networkx>=3.0",
+  "scipy>=1.11",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+notebook = ["nbformat>=5.9", "nbclient>=0.10", "ipykernel"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.setuptools.packages.find]
+include = ["nashgat*"]

@@ -1,0 +1,669 @@
+% references.bib -- NashGAT-MARL literature review
+% Every entry below was verified on 2026-10-19 by fetching metadata from at least one of:
+%   Crossref REST API (api.crossref.org/works/<DOI>), OpenAlex (api.openalex.org/works/doi:<DOI>),
+%   DataCite (api.datacite.org/dois/10.48550/arXiv.<id>), arXiv export API, or the official
+%   proceedings page (proceedings.neurips.cc, proceedings.mlr.press, jmlr.org, iclr.cc).
+% No entry was added from memory alone. Fields not returned by those sources were omitted.
+% Entries whose peer-review status is "preprint" are marked as such in the note field.
+
+% =====================================================================
+% A. Seed papers supplied by the project (all 6 DOIs resolved)
+% =====================================================================
+
+% Verified: Crossref (10.1109/TPAMI.2025.3634378) + OpenAlex W4416366467 (abstract)
+@article{shi2026ddfg,
+  author  = {Shi, Yuchen and Duan, Shihong and Xu, Cheng and Wang, Ran and Ye, Fangwen and Yuen, Chau},
+  title   = {Dynamic Deep Factor Graph for Multi-Agent Reinforcement Learning},
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year    = {2026},
+  volume  = {48},
+  number  = {3},
+  pages   = {3417--3431},
+  doi     = {10.1109/TPAMI.2025.3634378},
+  url     = {https://doi.org/10.1109/TPAMI.2025.3634378}
+}
+
+% Verified: Crossref (10.1016/j.neunet.2025.108437) + OpenAlex W4417305198; abstract via Semantic Scholar
+@article{peng2026gde,
+  author  = {Peng, Kexing and Qi, Hanwen and Ma, Tinghuai},
+  title   = {Graph based multi-agent reinforcement learning with evolutionary population for cooperation},
+  journal = {Neural Networks},
+  year    = {2026},
+  volume  = {196},
+  pages   = {108437},
+  doi     = {10.1016/j.neunet.2025.108437},
+  url     = {https://doi.org/10.1016/j.neunet.2025.108437}
+}
+
+% Verified: Crossref (10.1016/j.neunet.2026.108693) + OpenAlex W7128066690; abstract via Semantic Scholar
+@article{gou2026gsmarl,
+  author  = {Gou, Fandi and Du, Haikuo and Cai, Yunze},
+  title   = {A graph-based safe reinforcement learning method for multi-agent cooperation},
+  journal = {Neural Networks},
+  year    = {2026},
+  volume  = {199},
+  pages   = {108693},
+  doi     = {10.1016/j.neunet.2026.108693},
+  url     = {https://doi.org/10.1016/j.neunet.2026.108693}
+}
+
+% Verified: Crossref (10.1016/j.automatica.2025.112342) + OpenAlex W4410418157; abstract NOT available from open metadata
+@article{liu2025distributednash,
+  author  = {Liu, Qiwei and Yan, Huaicheng and Chen, Kaitian and Wang, Meng and Li, Zhichen},
+  title   = {Distributed {Nash} equilibrium solution for multi-agent game in adversarial environment: A reinforcement learning method},
+  journal = {Automatica},
+  year    = {2025},
+  volume  = {178},
+  pages   = {112342},
+  doi     = {10.1016/j.automatica.2025.112342},
+  url     = {https://doi.org/10.1016/j.automatica.2025.112342}
+}
+
+% Verified: Crossref (10.1109/TCSI.2025.3548900) + OpenAlex W4408399536; abstract via Semantic Scholar
+@article{zhang2025graphicalgames,
+  author  = {Zhang, Hanfang and Wang, Bing-Chang and Cao, Ying},
+  title   = {Reinforcement Learning Solutions to Stochastic Multi-Agent Graphical Games With Multiplicative Noise},
+  journal = {IEEE Transactions on Circuits and Systems I: Regular Papers},
+  year    = {2025},
+  volume  = {72},
+  number  = {7},
+  pages   = {3570--3583},
+  doi     = {10.1109/TCSI.2025.3548900},
+  url     = {https://doi.org/10.1109/TCSI.2025.3548900}
+}
+
+% Verified: Crossref (10.1007/s40747-026-02356-7, incl. abstract) + OpenAlex W7163892192
+@article{kuang2026llmgncf,
+  author  = {Kuang, Zihao and Xu, Zengmin and Wan, Linkai and Zhang, Chunjiong},
+  title   = {{LLM}-guided graph neural coordination framework for cooperative multi-agent reinforcement learning},
+  journal = {Complex \& Intelligent Systems},
+  year    = {2026},
+  volume  = {12},
+  number  = {9},
+  pages   = {225},
+  doi     = {10.1007/s40747-026-02356-7},
+  url     = {https://doi.org/10.1007/s40747-026-02356-7}
+}
+
+% =====================================================================
+% B. Foundational MARL / GNN / game-theory references
+% =====================================================================
+
+% Verified: Crossref (10.52202/068431-1787, NeurIPS 35 proceedings) + OpenAlex W7133226216 + DataCite arXiv:2103.01955
+@inproceedings{yu2022mappo,
+  author    = {Yu, Chao and Velu, Akash and Vinitsky, Eugene and Gao, Jiaxuan and Wang, Yu and Bayen, Alexandre and Wu, Yi},
+  title     = {The Surprising Effectiveness of {PPO} in Cooperative Multi-Agent Games},
+  booktitle = {Advances in Neural Information Processing Systems 35 (NeurIPS 2022)},
+  year      = {2022},
+  pages     = {24611--24624},
+  doi       = {10.52202/068431-1787},
+  url       = {https://doi.org/10.52202/068431-1787},
+  note      = {Datasets and Benchmarks track; arXiv:2103.01955}
+}
+
+% Verified: DataCite (10.48550/arXiv.1707.06347). PREPRINT (arXiv only)
+@misc{schulman2017ppo,
+  author        = {Schulman, John and Wolski, Filip and Dhariwal, Prafulla and Radford, Alec and Klimov, Oleg},
+  title         = {Proximal Policy Optimization Algorithms},
+  year          = {2017},
+  eprint        = {1707.06347},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.1707.06347},
+  url           = {https://doi.org/10.48550/arXiv.1707.06347},
+  note          = {Preprint}
+}
+
+% Verified: DataCite (arXiv:1710.10903) + OpenAlex W2766453196 (authors, abstract) + web search (ICLR 2018 conference track; Cambridge repository record). OpenReview id from secondary source.
+@inproceedings{velickovic2018gat,
+  author    = {Veli{\v{c}}kovi{\'c}, Petar and Cucurull, Guillem and Casanova, Arantxa and Romero, Adriana and Li{\`o}, Pietro and Bengio, Yoshua},
+  title     = {Graph Attention Networks},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2018},
+  url       = {https://openreview.net/forum?id=rJXMpikCZ},
+  note      = {arXiv:1710.10903}
+}
+
+% Verified: DataCite (arXiv:1706.02275) + proceedings.neurips.cc page (NIPS 2017, hash 68a9750337a418a86fe06c1991a1d64c)
+@inproceedings{lowe2017maddpg,
+  author    = {Lowe, Ryan and Wu, Yi and Tamar, Aviv and Harb, Jean and Abbeel, Pieter and Mordatch, Igor},
+  title     = {Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments},
+  booktitle = {Advances in Neural Information Processing Systems 30 (NIPS 2017)},
+  year      = {2017},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2017/hash/68a9750337a418a86fe06c1991a1d64c-Abstract.html},
+  note      = {arXiv:1706.02275}
+}
+
+% Verified: DataCite (arXiv:1711.00832) + proceedings.neurips.cc page (NIPS 2017, hash 3323fe11e9595c09af38fe67567a9394)
+@inproceedings{lanctot2017psro,
+  author    = {Lanctot, Marc and Zambaldi, Vinicius and Gruslys, Audrunas and Lazaridou, Angeliki and Tuyls, Karl and P{\'e}rolat, Julien and Silver, David and Graepel, Thore},
+  title     = {A Unified Game-Theoretic Approach to Multiagent Reinforcement Learning},
+  booktitle = {Advances in Neural Information Processing Systems 30 (NIPS 2017)},
+  year      = {2017},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2017/hash/3323fe11e9595c09af38fe67567a9394-Abstract.html},
+  note      = {arXiv:1711.00832}
+}
+
+% Verified: DataCite (arXiv:1810.09202) + OpenAlex W2975343435 + iclr.cc/virtual/2020/poster/1548 (ICLR 2020 main conference poster)
+@inproceedings{jiang2020dgn,
+  author    = {Jiang, Jiechuan and Dun, Chen and Huang, Tiejun and Lu, Zongqing},
+  title     = {Graph Convolutional Reinforcement Learning},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2020},
+  url       = {https://openreview.net/forum?id=HkxdQkSYDB},
+  note      = {arXiv:1810.09202}
+}
+
+% Verified: DataCite (arXiv:1812.09755) + OpenAlex W2906394285 + iclr.cc/virtual/2019/poster/770 (via web search)
+@inproceedings{singh2019ic3net,
+  author    = {Singh, Amanpreet and Jain, Tushar and Sukhbaatar, Sainbayar},
+  title     = {Learning when to Communicate at Scale in Multiagent Cooperative and Competitive Tasks},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2019},
+  url       = {https://iclr.cc/virtual/2019/poster/770},
+  note      = {arXiv:1812.09755}
+}
+
+% Verified: proceedings.mlr.press/v97/das19a.html (citation meta: ICML, pp. 1538-1546) + DataCite arXiv:1810.11187
+@inproceedings{das2019tarmac,
+  author    = {Das, Abhishek and Gervet, Th{\'e}ophile and Romoff, Joshua and Batra, Dhruv and Parikh, Devi and Rabbat, Mike and Pineau, Joelle},
+  title     = {{TarMAC}: Targeted Multi-Agent Communication},
+  booktitle = {Proceedings of the 36th International Conference on Machine Learning (ICML)},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {97},
+  pages     = {1538--1546},
+  year      = {2019},
+  url       = {https://proceedings.mlr.press/v97/das19a.html}
+}
+
+% Verified: DataCite (arXiv:2106.01969) + iclr.cc/virtual/2022/poster/7008 (ICLR 2022 poster page, WebFetch)
+@inproceedings{leonardos2022mpg,
+  author    = {Leonardos, Stefanos and Overman, Will and Panageas, Ioannis and Piliouras, Georgios},
+  title     = {Global Convergence of Multi-Agent Policy Gradient in {Markov} Potential Games},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022},
+  url       = {https://iclr.cc/virtual/2022/poster/7008},
+  note      = {arXiv:2106.01969}
+}
+
+% Verified: DataCite (10.48550/arXiv.1301.2281) + arXiv API comment "Appears in Proceedings of ... UAI2001" + OpenAlex W2160135758
+@inproceedings{kearns2001graphical,
+  author    = {Kearns, Michael and Littman, Michael L. and Singh, Satinder},
+  title     = {Graphical Models for Game Theory},
+  booktitle = {Proceedings of the Seventeenth Conference on Uncertainty in Artificial Intelligence (UAI 2001)},
+  year      = {2001},
+  doi       = {10.48550/arXiv.1301.2281},
+  url       = {https://doi.org/10.48550/arXiv.1301.2281}
+}
+
+% Verified: proceedings.mlr.press/v80/yang18d.html (citation meta: ICML, pp. 5571-5580) + DataCite arXiv:1802.05438
+@inproceedings{yang2018meanfield,
+  author    = {Yang, Yaodong and Luo, Rui and Li, Minne and Zhou, Ming and Zhang, Weinan and Wang, Jun},
+  title     = {Mean Field Multi-Agent Reinforcement Learning},
+  booktitle = {Proceedings of the 35th International Conference on Machine Learning (ICML)},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {80},
+  pages     = {5571--5580},
+  year      = {2018},
+  url       = {https://proceedings.mlr.press/v80/yang18d.html}
+}
+
+% Verified: jmlr.org/papers/v4/hu03a.html (citation meta: JMLR vol 4, pp. 1039-1069) + OpenAlex W2120846115 (no DOI exists)
+@article{hu2003nashq,
+  author  = {Hu, Junling and Wellman, Michael P.},
+  title   = {Nash {Q}-Learning for General-Sum Stochastic Games},
+  journal = {Journal of Machine Learning Research},
+  year    = {2003},
+  volume  = {4},
+  pages   = {1039--1069},
+  url     = {https://www.jmlr.org/papers/v4/hu03a.html}
+}
+
+% Verified: Crossref (10.1137/070699652)
+@article{daskalakis2009complexity,
+  author  = {Daskalakis, Constantinos and Goldberg, Paul W. and Papadimitriou, Christos H.},
+  title   = {The Complexity of Computing a {Nash} Equilibrium},
+  journal = {SIAM Journal on Computing},
+  year    = {2009},
+  volume  = {39},
+  number  = {1},
+  pages   = {195--259},
+  doi     = {10.1137/070699652},
+  url     = {https://doi.org/10.1137/070699652}
+}
+
+% Verified: Crossref (10.24963/ijcai.2019/66)
+@inproceedings{lockhart2019exploitability,
+  author    = {Lockhart, Edward and Lanctot, Marc and P{\'e}rolat, Julien and Lespiau, Jean-Baptiste and Morrill, Dustin and Timbers, Finbarr and Tuyls, Karl},
+  title     = {Computing Approximate Equilibria in Sequential Adversarial Games by Exploitability Descent},
+  booktitle = {Proceedings of the Twenty-Eighth International Joint Conference on Artificial Intelligence (IJCAI)},
+  year      = {2019},
+  pages     = {464--470},
+  doi       = {10.24963/ijcai.2019/66},
+  url       = {https://doi.org/10.24963/ijcai.2019/66}
+}
+
+% Verified: Crossref (10.1126/science.add4679)
+@article{perolat2022stratego,
+  author  = {Perolat, Julien and De Vylder, Bart and Hennes, Daniel and Tarassov, Eugene and Strub, Florian and de Boer, Vincent and Muller, Paul and Connor, Jerome T. and Burch, Neil and Anthony, Thomas and McAleer, Stephen and Elie, Romuald and Cen, Sarah H. and Wang, Zhe and Gruslys, Audrunas and Malysheva, Aleksandra and Khan, Mina and Ozair, Sherjil and Timbers, Finbarr and Pohlen, Toby and Eccles, Tom and Rowland, Mark and Lanctot, Marc and Lespiau, Jean-Baptiste and Piot, Bilal and Omidshafiei, Shayegan and Lockhart, Edward and Sifre, Laurent and Beauguerlange, Nathalie and Munos, Remi and Silver, David and Singh, Satinder and Hassabis, Demis and Tuyls, Karl},
+  title   = {Mastering the game of {Stratego} with model-free multiagent reinforcement learning},
+  journal = {Science},
+  year    = {2022},
+  volume  = {378},
+  number  = {6623},
+  pages   = {990--996},
+  doi     = {10.1126/science.add4679},
+  url     = {https://doi.org/10.1126/science.add4679}
+}
+
+% Verified: DataCite (10.48550/arXiv.1603.01121). PREPRINT (arXiv only)
+@misc{heinrich2016nfsp,
+  author        = {Heinrich, Johannes and Silver, David},
+  title         = {Deep Reinforcement Learning from Self-Play in Imperfect-Information Games},
+  year          = {2016},
+  eprint        = {1603.01121},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.1603.01121},
+  url           = {https://doi.org/10.48550/arXiv.1603.01121},
+  note          = {Preprint}
+}
+
+% Verified: OpenAlex (10.48550/arXiv.2303.04865, W4323921909). PREPRINT (arXiv; no peer-reviewed version verified)
+@misc{zhou2023networkedmpg,
+  author        = {Zhou, Zhaoyi and Chen, Zaiwei and Lin, Yiheng and Wierman, Adam},
+  title         = {Convergence Rates for Localized Actor-Critic in Networked {Markov} Potential Games},
+  year          = {2023},
+  eprint        = {2303.04865},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2303.04865},
+  url           = {https://doi.org/10.48550/arXiv.2303.04865},
+  note          = {Preprint}
+}
+
+% Verified: Crossref (10.52202/075280-1624, NeurIPS 36 proceedings) + OpenAlex W7133200960 (abstract)
+@inproceedings{park2023networkedzerosum,
+  author    = {Park, Chanwoo and Zhang, Kaiqing and Ozdaglar, Asuman},
+  title     = {Multi-Player Zero-Sum {Markov} Games with Networked Separable Interactions},
+  booktitle = {Advances in Neural Information Processing Systems 36 (NeurIPS 2023)},
+  year      = {2023},
+  pages     = {37354--37369},
+  doi       = {10.52202/075280-1624},
+  url       = {https://doi.org/10.52202/075280-1624}
+}
+
+% Verified: Crossref (10.1109/tsmc.2024.3462762) + OpenAlex W4403094994 (abstract)
+@article{moghaddam2025nashseeking,
+  author  = {Ramezani Moghaddam, Alireza and Kebriaei, Hamed},
+  title   = {Multiagent Reinforcement Learning for {Nash} Equilibrium Seeking in General-Sum {Markov} Games},
+  journal = {IEEE Transactions on Systems, Man, and Cybernetics: Systems},
+  year    = {2025},
+  volume  = {55},
+  number  = {1},
+  pages   = {221--227},
+  doi     = {10.1109/TSMC.2024.3462762},
+  url     = {https://doi.org/10.1109/TSMC.2024.3462762}
+}
+
+% =====================================================================
+% C. Traffic signal control: simulator, classic RL/GNN baselines
+% =====================================================================
+
+% Verified: Crossref (10.1145/3357384.3357902) + OpenAlex W2983178256 (abstract) + DataCite arXiv:1905.05717 (full title)
+% Verification note: Crossref title field records only "CoLight"; full title verified via DataCite record of arXiv:1905.05717
+@inproceedings{wei2019colight,
+  author    = {Wei, Hua and Xu, Nan and Zhang, Huichu and Zheng, Guanjie and Zang, Xinshi and Chen, Chacha and Zhang, Weinan and Zhu, Yanmin and Xu, Kai and Li, Zhenhui},
+  title     = {{CoLight}: Learning Network-level Cooperation for Traffic Signal Control},
+  booktitle = {Proceedings of the 28th ACM International Conference on Information and Knowledge Management (CIKM)},
+  year      = {2019},
+  pages     = {1913--1922},
+  doi       = {10.1145/3357384.3357902},
+  url       = {https://doi.org/10.1145/3357384.3357902},
+}
+
+% Verified: Crossref (10.1145/3308558.3314139) + OpenAlex W2945991855 (abstract)
+@inproceedings{zhang2019cityflow,
+  author    = {Zhang, Huichu and Feng, Siyuan and Liu, Chang and Ding, Yaoyao and Zhu, Yichen and Zhou, Zihan and Zhang, Weinan and Yu, Yong and Jin, Haiming and Li, Zhenhui},
+  title     = {{CityFlow}: A Multi-Agent Reinforcement Learning Environment for Large Scale City Traffic Scenario},
+  booktitle = {The World Wide Web Conference (WWW '19)},
+  year      = {2019},
+  pages     = {3620--3624},
+  doi       = {10.1145/3308558.3314139},
+  url       = {https://doi.org/10.1145/3308558.3314139}
+}
+
+% Verified: Crossref (10.1145/3292500.3330949) + OpenAlex W2964749398 (abstract) + web search (pure.psu.edu, full title)
+% Verification note: Crossref title field records only "PressLight"; full title confirmed via Penn State research portal (pure.psu.edu) record
+@inproceedings{wei2019presslight,
+  author    = {Wei, Hua and Chen, Chacha and Zheng, Guanjie and Wu, Kan and Gayah, Vikash and Xu, Kai and Li, Zhenhui},
+  title     = {{PressLight}: Learning Max Pressure Control to Coordinate Traffic Signals in Arterial Network},
+  booktitle = {Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining (KDD)},
+  year      = {2019},
+  pages     = {1290--1298},
+  doi       = {10.1145/3292500.3330949},
+  url       = {https://doi.org/10.1145/3292500.3330949},
+}
+
+% Verified: Crossref (10.1609/aaai.v34i04.5744, incl. abstract)
+@inproceedings{chen2020mplight,
+  author    = {Chen, Chacha and Wei, Hua and Xu, Nan and Zheng, Guanjie and Yang, Ming and Xiong, Yuanhao and Xu, Kai and Li, Zhenhui},
+  title     = {Toward A Thousand Lights: Decentralized Deep Reinforcement Learning for Large-Scale Traffic Signal Control},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year      = {2020},
+  volume    = {34},
+  number    = {04},
+  pages     = {3414--3421},
+  doi       = {10.1609/aaai.v34i04.5744},
+  url       = {https://doi.org/10.1609/aaai.v34i04.5744}
+}
+
+% Verified: Crossref (10.1109/TITS.2019.2901791) + OpenAlex W2915117209 (abstract)
+@article{chu2020marltsc,
+  author  = {Chu, Tianshu and Wang, Jie and Codec{\`a}, Lara and Li, Zhaojian},
+  title   = {Multi-Agent Deep Reinforcement Learning for Large-Scale Traffic Signal Control},
+  journal = {IEEE Transactions on Intelligent Transportation Systems},
+  year    = {2020},
+  volume  = {21},
+  number  = {3},
+  pages   = {1086--1095},
+  doi     = {10.1109/TITS.2019.2901791},
+  url     = {https://doi.org/10.1109/TITS.2019.2901791}
+}
+
+% Verified: Crossref (10.1145/3447556.3447565, incl. abstract)
+% Verification note: Title as recorded by Crossref; the author PDF carries a longer subtitle not confirmed against the publisher page
+@article{wei2021tscsurvey,
+  author  = {Wei, Hua and Zheng, Guanjie and Gayah, Vikash and Li, Zhenhui},
+  title   = {Recent Advances in Reinforcement Learning for Traffic Signal Control},
+  journal = {ACM SIGKDD Explorations Newsletter},
+  year    = {2021},
+  volume  = {22},
+  number  = {2},
+  pages   = {12--18},
+  doi     = {10.1145/3447556.3447565},
+  url     = {https://doi.org/10.1145/3447556.3447565},
+}
+
+% =====================================================================
+% D. Recent (2023-2026) graph-MARL traffic signal control
+% =====================================================================
+
+% Verified: Crossref (10.1109/jiot.2025.3525640) + OpenAlex W4406028115 (abstract)
+@article{shang2025magsac,
+  author  = {Shang, Jing and Meng, Shunmei and Hou, Jun and Zhao, Xiaoran and Zhou, Xiaokang and Jiang, Rong and Qi, Lianyong and Li, Qianmu},
+  title   = {Graph-Based Cooperation Multiagent Reinforcement Learning for Intelligent Traffic Signal Control},
+  journal = {IEEE Internet of Things Journal},
+  year    = {2025},
+  volume  = {12},
+  number  = {10},
+  pages   = {14362--14374},
+  doi     = {10.1109/JIOT.2025.3525640},
+  url     = {https://doi.org/10.1109/JIOT.2025.3525640}
+}
+
+% Verified: Crossref (10.1109/tits.2025.3526223) + OpenAlex W4406457539 (abstract)
+@article{zhai2025hgatmarl,
+  author  = {Zhai, Ziyang and Hao, Ruru and Cui, Boyang and Wang, Siyi},
+  title   = {{HGAT} and Multi-Agent {RL}-Based Method for Multi-Intersection Traffic Signal Control},
+  journal = {IEEE Transactions on Intelligent Transportation Systems},
+  year    = {2025},
+  volume  = {26},
+  number  = {5},
+  pages   = {6848--6864},
+  doi     = {10.1109/TITS.2025.3526223},
+  url     = {https://doi.org/10.1109/TITS.2025.3526223}
+}
+
+% Verified: Crossref (10.1109/tmc.2025.3556243) + OpenAlex W4409014172 (abstract)
+@article{wang2025hypergraphtsc,
+  author  = {Wang, Kang and Shen, Zhishu and Lei, Zhen and Liu, Xianhui and Zhang, Tiehua},
+  title   = {Toward Multi-Agent Reinforcement Learning Based Traffic Signal Control Through Spatio-Temporal Hypergraphs},
+  journal = {IEEE Transactions on Mobile Computing},
+  year    = {2025},
+  volume  = {24},
+  number  = {9},
+  pages   = {8258--8271},
+  doi     = {10.1109/TMC.2025.3556243},
+  url     = {https://doi.org/10.1109/TMC.2025.3556243}
+}
+
+% Verified: Crossref (10.1177/03611981241297979) + OpenAlex W4407058066 (abstract)
+@article{yang2025gatddpg,
+  author  = {Yang, Guoqing and Wen, Xin and Chen, Fuqiang},
+  title   = {Multi-Agent Deep Reinforcement Learning with Graph Attention Network for Traffic Signal Control in Multiple-Intersection Urban Areas},
+  journal = {Transportation Research Record: Journal of the Transportation Research Board},
+  year    = {2025},
+  volume  = {2679},
+  number  = {4},
+  pages   = {880--898},
+  doi     = {10.1177/03611981241297979},
+  url     = {https://doi.org/10.1177/03611981241297979}
+}
+
+% Verified: Crossref (10.1016/j.engappai.2025.111602) + OpenAlex W4412102495; abstract NOT available from open metadata
+@article{yang2025storeforward,
+  author  = {Yang, Kangkang and Wang, Zhiwen and Meng, Xinyou and Li, Long and Shi, Yaoke and Yu, Yuling and Wang, Haoxu and Yao, Ziheng},
+  title   = {Store-and-forward with graph attention: Enhanced multi-agent reinforcement learning for emergency-responsive traffic signal control},
+  journal = {Engineering Applications of Artificial Intelligence},
+  year    = {2025},
+  volume  = {159},
+  pages   = {111602},
+  doi     = {10.1016/j.engappai.2025.111602},
+  url     = {https://doi.org/10.1016/j.engappai.2025.111602}
+}
+
+% Verified: Crossref (10.1016/j.eswa.2026.132707) + OpenAlex W7160396645; abstract NOT available from open metadata
+@article{yang2026heterodist,
+  author  = {Yang, Shantian and Zeng, Zheng},
+  title   = {Heterogeneous graph distributional reinforcement learning for out-of-distribution traffic signal control},
+  journal = {Expert Systems with Applications},
+  year    = {2026},
+  volume  = {325},
+  pages   = {132707},
+  doi     = {10.1016/j.eswa.2026.132707},
+  url     = {https://doi.org/10.1016/j.eswa.2026.132707}
+}
+
+% Verified: Crossref (10.1038/s41598-026-65802-z) + OpenAlex W7202366197 (abstract). Crossref returned no volume/article number.
+@article{zhang2026sanis,
+  author  = {Zhang, Yongnan and Peng, Sirui and Luo, Xiaobin and Gu, Xin and Jia, Xiaolu and Li, Yunxuan},
+  title   = {Distributed multi-agent reinforcement learning with neighborhood-aware spatio-temporal coordination for traffic network signal control},
+  journal = {Scientific Reports},
+  year    = {2026},
+  doi     = {10.1038/s41598-026-65802-z},
+  url     = {https://doi.org/10.1038/s41598-026-65802-z}
+}
+
+% Verified: Crossref (10.1016/j.asoc.2026.116565; Crossref issue date January 2027) + OpenAlex W7215037705; abstract NOT available from open metadata
+@article{ji2027stackelbergtsc,
+  author  = {Ji, Ang and Gao, Yelin and Sun, Zhanbo and Cai, Yiming and Lin, Xia and Liu, Lin and Wang, Wenjun},
+  title   = {Asynchronous multi-agent reinforcement learning for network-wide traffic signal control via {Stackelberg} game prioritization},
+  journal = {Applied Soft Computing},
+  year    = {2027},
+  volume  = {204},
+  pages   = {116565},
+  doi     = {10.1016/j.asoc.2026.116565},
+  url     = {https://doi.org/10.1016/j.asoc.2026.116565}
+}
+
+% Verified: Crossref (10.1109/itsc57777.2023.10422534) + OpenAlex W4391770468 (abstract)
+@inproceedings{zhang2023nashdqn,
+  author    = {Zhang, Yuli and Wang, Shangbo and Ma, Xiaoguang and Yue, Wenwei and Jiang, Ruiyuan},
+  title     = {Large-Scale Traffic Signal Control by a {Nash} Deep {Q}-network Approach},
+  booktitle = {2023 IEEE 26th International Conference on Intelligent Transportation Systems (ITSC)},
+  year      = {2023},
+  pages     = {4584--4591},
+  doi       = {10.1109/ITSC57777.2023.10422534},
+  url       = {https://doi.org/10.1109/ITSC57777.2023.10422534}
+}
+
+% Verified: Crossref (10.3390/electronics13101910) + OpenAlex W4396858723 (abstract)
+@article{yan2024dcnpg,
+  author  = {Yan, Liping and Wang, Jing},
+  title   = {Deep Reinforcement Learning for Ecological and Distributed Urban Traffic Signal Control with Multi-Agent Equilibrium Decision Making},
+  journal = {Electronics},
+  year    = {2024},
+  volume  = {13},
+  number  = {10},
+  pages   = {1910},
+  doi     = {10.3390/electronics13101910},
+  url     = {https://doi.org/10.3390/electronics13101910}
+}
+
+% =====================================================================
+% E. Communication-aware / dynamic-graph MARL (2024-2026)
+% =====================================================================
+
+% Verified: Crossref (10.1609/aaai.v39i22.34507) + OpenAlex W4409348008 (abstract)
+@inproceedings{zhang2025tgcnet,
+  author    = {Zhang, Zhuohui and He, Bin and Cheng, Bin and Li, Gang},
+  title     = {Bridging Training and Execution via Dynamic Directed Graph-Based Communication in Cooperative Multi-Agent Systems},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year      = {2025},
+  volume    = {39},
+  number    = {22},
+  pages     = {23395--23403},
+  doi       = {10.1609/aaai.v39i22.34507},
+  url       = {https://doi.org/10.1609/aaai.v39i22.34507}
+}
+
+% Verified: Crossref (10.1109/tmlcn.2026.3719222) + OpenAlex W4416236299 (abstract)
+@article{zhang2026commprotocols,
+  author  = {Zhang, Xinren and Yu, Jiadong and Zhong, Zixin},
+  title   = {Learning Efficient Communication Protocols for Multi-Agent Reinforcement Learning},
+  journal = {IEEE Transactions on Machine Learning in Communications and Networking},
+  year    = {2026},
+  volume  = {4},
+  pages   = {1335--1352},
+  doi     = {10.1109/TMLCN.2026.3719222},
+  url     = {https://doi.org/10.1109/TMLCN.2026.3719222}
+}
+
+% Verified: OpenAlex (10.48550/arXiv.2501.00165, W4406030907). PREPRINT (arXiv only)
+@misc{mcclusky2024dyngraphcomm,
+  author        = {McClusky, Ben},
+  title         = {Dynamic Graph Communication for Decentralised Multi-Agent Reinforcement Learning},
+  year          = {2024},
+  eprint        = {2501.00165},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2501.00165},
+  url           = {https://doi.org/10.48550/arXiv.2501.00165},
+  note          = {Preprint}
+}
+
+% =====================================================================
+% F. Closest prior work for the novelty check (graph attention + Nash / game-theoretic MARL)
+% =====================================================================
+
+% Verified: Crossref (10.5267/j.ijdns.2025.9.009) + OpenAlex W7104177392 (abstract)
+@article{alqudah2026nashhgt,
+  author  = {Al-Qudah, Rabiah and Al Tawil, Arar and AlMuhajiri, Mrouj and Almazaydeh, Laiali and Suen, Ching Y.},
+  title   = {{Nash}-regularized heterogeneous graph transformer networks for strategic task offloading in {6G} edge computing},
+  journal = {International Journal of Data and Network Science},
+  year    = {2026},
+  volume  = {10},
+  number  = {1},
+  pages   = {415--432},
+  doi     = {10.5267/j.ijdns.2025.9.009},
+  url     = {https://doi.org/10.5267/j.ijdns.2025.9.009}
+}
+
+% Verified: Crossref (10.1088/2631-8695/ae67d6) + OpenAlex W7160310166 (abstract)
+@article{fei2026gatgame,
+  author  = {Fei, Qiang and Zhang, Wenjian and Liu, Jialin},
+  title   = {Graph attention-based distributed game-theoretic framework for elastic collaborative predictive maintenance in communication-constrained production line clusters},
+  journal = {Engineering Research Express},
+  year    = {2026},
+  volume  = {8},
+  number  = {9},
+  pages   = {095244},
+  doi     = {10.1088/2631-8695/ae67d6},
+  url     = {https://doi.org/10.1088/2631-8695/ae67d6}
+}
+
+% Verified: Crossref (10.1109/tsg.2026.3669058) + OpenAlex W7131873644 (abstract)
+@article{li2026evpricing,
+  author  = {Li, Yujing and Xing, Qiang and Lv, Si and Li, Zening},
+  title   = {Mixed Competitive--Cooperative Pricing for {EV} Charging Stations: A Multi-Agent Reinforcement Learning Approach With Heterogeneous Hierarchical Attention},
+  journal = {IEEE Transactions on Smart Grid},
+  year    = {2026},
+  volume  = {17},
+  number  = {5},
+  pages   = {4398--4411},
+  doi     = {10.1109/TSG.2026.3669058},
+  url     = {https://doi.org/10.1109/TSG.2026.3669058}
+}
+
+% Verified: Crossref (10.1016/j.inffus.2026.104506) + OpenAlex W7163079619; abstract NOT available from open metadata
+@article{cheng2026sgasac,
+  author  = {Cheng, Xinmin and Xu, Binxin and Yin, Hongwei and Shen, Shigen and Liu, Zhiquan and Wang, Tian and Li, Ruidong},
+  title   = {{SGA-SAC}: Fusing {Bayesian} {Stackelberg} games to {DRL} with graph attention for explainable task offloading in vehicular edge computing},
+  journal = {Information Fusion},
+  year    = {2026},
+  volume  = {136},
+  pages   = {104506},
+  doi     = {10.1016/j.inffus.2026.104506},
+  url     = {https://doi.org/10.1016/j.inffus.2026.104506}
+}
+
+% Verified: Crossref (10.21203/rs.3.rs-10945491/v1, type posted-content) + OpenAlex W7211970186. PREPRINT (Research Square); abstract NOT available from open metadata
+@misc{samanta2026gatmappoeig,
+  author = {Samanta, Sukanya},
+  title  = {{GAT-MAPPO-EIG}: A Graph Attention Multi-Agent Reinforcement Learning Framework for Escape Interdiction Games on Dynamic Transportation Networks},
+  year   = {2026},
+  howpublished = {Research Square preprint},
+  doi    = {10.21203/rs.3.rs-10945491/v1},
+  url    = {https://doi.org/10.21203/rs.3.rs-10945491/v1},
+  note   = {Preprint, not peer reviewed}
+}
+
+% =====================================================================
+% Added during mathematical modelling (main session, 2026-10-19)
+% =====================================================================
+
+% Verified: OpenAlex search (title, authors Kakade & Langford, year 2002; landing page CiteSeerX 10.1.1.121.3684).
+% Venue (ICML 2002) not returned by OpenAlex -> requires verification before submission.
+@inproceedings{kakade2002approximately,
+  author    = {Kakade, Sham M. and Langford, John C.},
+  title     = {Approximately Optimal Approximate Reinforcement Learning},
+  booktitle = {Proceedings of the International Conference on Machine Learning (venue requires verification)},
+  year      = {2002},
+  url       = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.121.3684}
+}
+
+% Verified: Crossref (10.52202/068431-0140), container-title "Advances in Neural Information Processing Systems 35", 2022
+@inproceedings{zhang2022softmaxmpg,
+  author    = {Zhang, Runyu and Mei, Jincheng and Dai, Bo and Schuurmans, Dale and Li, Na},
+  title     = {On the Global Convergence Rates of Decentralized Softmax Gradient Play in Markov Potential Games},
+  booktitle = {Advances in Neural Information Processing Systems 35},
+  year      = {2022},
+  doi       = {10.52202/068431-0140}
+}
+
+% Verified: DataCite (10.48550/arXiv.2105.14491): title, creators Brody/Alon/Yahav, year 2021 (arXiv record).
+% Peer-reviewed venue (ICLR 2022) not confirmed in this session -> cited as arXiv preprint.
+@misc{brody2021gatv2,
+  author = {Brody, Shaked and Alon, Uri and Yahav, Eran},
+  title  = {How Attentive are Graph Attention Networks?},
+  year   = {2021},
+  doi    = {10.48550/arXiv.2105.14491},
+  note   = {arXiv:2105.14491 (preprint record)}
+}
+
+% Verified: DataCite (10.48550/arXiv.1506.02438): title, creators, year 2015 (arXiv record).
+@misc{schulman2015gae,
+  author = {Schulman, John and Moritz, Philipp and Levine, Sergey and Jordan, Michael and Abbeel, Pieter},
+  title  = {High-Dimensional Continuous Control Using Generalized Advantage Estimation},
+  year   = {2015},
+  doi    = {10.48550/arXiv.1506.02438},
+  note   = {arXiv:1506.02438 (preprint record)}
+}
+
+% Verified: OpenAlex (doi 10.2307/4615733): title, author, venue, volume 6, pages 65-70, year 1979.
+@article{holm1979,
+  author  = {Holm, Sture},
+  title   = {A Simple Sequentially Rejective Multiple Test Procedure},
+  journal = {Scandinavian Journal of Statistics},
+  year    = {1979},
+  volume  = {6},
+  pages   = {65--70},
+  doi     = {10.2307/4615733}
+}
