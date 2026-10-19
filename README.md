@@ -11,9 +11,9 @@ Code, Colab notebook and released results for **exploitability-aware graph-atten
 * robustness and zero-shot transfer tests on the CoLight Jinan 3×4, Hangzhou 4×4 and New York 28×7 benchmark files.
 
 **Authors**
-Badr El Khalyly¹ and Zouhair Ibn Batouta²<br>
-¹ LTIM – Laboratory of Techniques of Information and Modeling, FSBM, Hassan II University, Casablanca, Morocco<br>
-² RITM – ESTC/CED, ENSEM, Hassan II University, Casablanca, Morocco<br>
+Badr El Khalyly∗ and Zouhair Ibn Batouta†<br>
+∗ LTIM – Laboratory of Techniques of Information and Modeling, FSBM, Hassan II University, Casablanca, Morocco<br>
+† RITM – ESTC/CED, ENSEM, Hassan II University, Casablanca, Morocco<br>
 badrelkhalylyphd@gmail.com · Zouhair.ibnbatouta@gmail.com
 
 ---

@@ -66,9 +66,9 @@ def bib_table() -> str:
 md("""
 # NashGAT-MARL: dynamic graph attention and exploitability-aware MARL for traffic-signal control
 
-**Badr El Khalyly**¹ and **Zouhair Ibn Batouta**²<br>
-¹ LTIM – Laboratory of Techniques of Information and Modeling, FSBM, Hassan II University, Casablanca, Morocco<br>
-² RITM – ESTC/CED, ENSEM, Hassan II University, Casablanca, Morocco<br>
+**Badr El Khalyly**∗ and **Zouhair Ibn Batouta**†<br>
+∗ LTIM – Laboratory of Techniques of Information and Modeling, FSBM, Hassan II University, Casablanca, Morocco<br>
+† RITM – ESTC/CED, ENSEM, Hassan II University, Casablanca, Morocco<br>
 badrelkhalylyphd@gmail.com · Zouhair.ibnbatouta@gmail.com
 
 **Research notebook.** It is reproducible and self-contained. GPU is optional: the networks are small, so CPU is often as fast.
