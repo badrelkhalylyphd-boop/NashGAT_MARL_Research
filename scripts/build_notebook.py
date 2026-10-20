@@ -71,6 +71,9 @@ md("""
 † RITM – ESTC/CED, ENSEM, Hassan II University, Casablanca, Morocco<br>
 badrelkhalylyphd@gmail.com · Zouhair.ibnbatouta@gmail.com
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/badrelkhalylyphd-boop/NashGAT_MARL_Research/blob/main/notebooks/NashGAT_MARL_Research.ipynb)
+Code and released results: https://github.com/badrelkhalylyphd-boop/NashGAT_MARL_Research
+
 **Research notebook.** It is reproducible and self-contained. GPU is optional: the networks are small, so CPU is often as fast.
 
 | Mode | Purpose | Budget |

@@ -1,6 +1,6 @@
 # NashGAT-MARL: reproducibility code
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GITHUB_USER/NashGAT-MARL/blob/main/notebooks/NashGAT_MARL_Research.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/badrelkhalylyphd-boop/NashGAT_MARL_Research/blob/main/notebooks/NashGAT_MARL_Research.ipynb)
 
 Code, Colab notebook and released results for **exploitability-aware graph-attention multi-agent reinforcement learning for traffic-signal control**. The repository covers:
 
