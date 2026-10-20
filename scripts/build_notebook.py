@@ -78,18 +78,29 @@ Code and released results: https://github.com/badrelkhalylyphd-boop/NashGAT_MARL
 
 | Mode | Purpose | Budget |
 |---|---|---|
-| `FAST_DEMO` | functional verification (≈10–20 min on Colab CPU) | 1 seed, short episodes, few iterations. **Numbers are NOT research results.** |
-| `FULL_EXPERIMENT` | the protocol used in the paper | 5 seeds × 250 episodes × 3,600 s, robustness suite, best-response exploitability |
+| `REPRODUCE_PAPER` (default) | **reviewers: reproduces the paper's tables and figures.** Downloads the 52 released trained models and logs from GitHub, regenerates every table and figure, and independently re-runs the models and reference controllers to check them | ≈ 15–25 min on Colab CPU |
+| `FAST_DEMO` | functional check of the full training pipeline | ≈ 15–30 min; 1 seed, short episodes. **Numbers are NOT research results.** |
+| `FULL_EXPERIMENT` | retrains everything from scratch with the paper's protocol | many hours; 5 seeds × 250 episodes × 3,600 s. Retrained numbers differ slightly from the paper (RL training is not bit-reproducible across hardware); conclusions should hold within the confidence intervals |
+
+**What `REPRODUCE_PAPER` guarantees.** The paper's numbers come from the released run files and are regenerated here. Three checks are recomputed in this session. Greedy evaluations of the released models and the FixedTime/MaxPressure references are deterministic, so they must match the paper **exactly**. Stochastic evaluations use a new random stream, so they must agree within sampling noise. The paper's results use the **QueueSim** simulator, so this mode forces QueueSim.
 
 **Integrity rules followed here.** Every number printed is computed in this run; nothing is typed in by hand. Literature metadata was verified against Crossref, OpenAlex, DataCite, arXiv or proceedings pages on 2026-10-19. Scopus could not be accessed, so indexing is marked *requires verification*. Results from **CityFlow** and from the fallback **QueueSim** simulator are separate experimental environments and must never be pooled.
 """)
 code("""
 # ====== experiment mode ======
-MODE = "FAST_DEMO"          # "FAST_DEMO" or "FULL_EXPERIMENT"
+MODE = "REPRODUCE_PAPER"    # "REPRODUCE_PAPER", "FAST_DEMO" or "FULL_EXPERIMENT"
 USE_DRIVE = False           # True: mount Google Drive and copy checkpoints/results there
 PREFER_CITYFLOW = True      # try to build CityFlow; fall back to QueueSim if that fails
+REPO_URL = "https://github.com/badrelkhalylyphd-boop/NashGAT_MARL_Research.git"
 
-if MODE == "FAST_DEMO":
+if MODE == "REPRODUCE_PAPER":
+    # the paper's protocol; nothing is retrained, the released runs are downloaded and re-checked
+    CFG = dict(seeds=[0, 1, 2, 3, 4], episodes=250, horizon=3600, eval_episodes=3, robustness=True,
+               br_agents=(0, 1, 5), br_episodes=20, br_eval_episodes=5, gg_steps=1500, gg_seeds=5,
+               ablations=["nashgat_no_gnn", "nashgat_no_attention", "nashgat_no_nash",
+                          "nashgat_no_comm_penalty", "nashgat_static_graph"])
+    PREFER_CITYFLOW = False     # the paper's results were produced with QueueSim
+elif MODE == "FAST_DEMO":
     CFG = dict(seeds=[0], episodes=4, horizon=900, eval_episodes=1, robustness=True,
                br_agents=(0, 5), br_episodes=2, br_eval_episodes=2, gg_steps=300, gg_seeds=2,
                ablations=["nashgat_no_nash", "nashgat_static_graph"])
@@ -234,6 +245,20 @@ if not (DATA_DIR / "data/Jinan/3_4/roadnet_3_4.json").exists():
         subprocess.run(c, shell=True, check=True)
 commit = subprocess.run(["git", "-C", str(DATA_DIR), "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
 print("CoLight data commit:", commit)
+""")
+code("""
+# REPRODUCE_PAPER: download the released runs (trained models, logs, evaluations) from the GitHub repository
+RELEASED = WORK / "released"
+if MODE == "REPRODUCE_PAPER":
+    if not (RELEASED / "results/traffic").exists():
+        subprocess.run(["git", "clone", "--depth", "1", REPO_URL, str(RELEASED)], check=True)
+    shutil.copytree(RELEASED / "results", RESULTS, dirs_exist_ok=True)
+    runs = sorted(RESULTS.glob("traffic/*/seed*/eval.json"))
+    print("released runs copied to", RESULTS, ":", len(runs), "runs, commit",
+          subprocess.run(["git", "-C", str(RELEASED), "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip())
+    assert len(runs) == 52, len(runs)
+else:
+    print("mode", MODE, ": runs are trained in this session")
 """)
 
 # --------------------------------------------------------------------------- part 5 (package) placed before use
@@ -405,7 +430,7 @@ def checkpoint_to_drive():
         shutil.copytree(RESULTS, DRIVE / RESULTS.name, dirs_exist_ok=True)
 
 t_start = time.time()
-for seed in CFG["seeds"]:
+for seed in ([] if MODE == "REPRODUCE_PAPER" else CFG["seeds"]):   # REPRODUCE_PAPER: nothing is retrained
     for m in METHODS + CFG["ablations"]:
         if (TRAFFIC / m / f"seed{seed}" / "eval.json").exists():
             print("skip (exists)", m, seed); continue
@@ -426,20 +451,63 @@ scen = {"nominal": default_env_config(DATA_ROOT, "jinan", horizon=CFG["horizon"]
 for sname, c in scen.items():
     for pol in ("fixed", "maxpressure"):
         rows.append({"scenario": sname, "controller": pol, **run_rule(TrafficMAEnv(replace(c, backend=BACKEND)), pol)})
-rule_df = pd.DataFrame(rows); rule_df.to_csv(RESULTS / "rule_based.csv", index=False)
+rule_df = pd.DataFrame(rows)
+if MODE == "REPRODUCE_PAPER":
+    # keep the released file (it has more scenarios); the recomputed values must match it exactly (deterministic)
+    rel = pd.read_csv(RESULTS / "rule_based.csv").set_index(["scenario", "controller"])
+    for _, r in rule_df.iterrows():
+        paper = rel.loc[(r.scenario, r.controller), "avg_travel_time"]
+        print(f"{r.scenario:18s} {r.controller:12s} ATT recomputed {r.avg_travel_time:8.2f} | paper {paper:8.2f}")
+        assert abs(r.avg_travel_time - paper) < 1e-6 * max(1, paper), "rule-based result does not match the paper"
+    print("rule-based references: exact match with the paper")
+else:
+    rule_df.to_csv(RESULTS / "rule_based.csv", index=False)
 display(rule_df[["scenario", "controller", "avg_travel_time", "avg_waiting_time", "throughput", "avg_queue_per_intersection"]])
 """)
 code("""
+# REPRODUCE_PAPER: independent re-run of every released trained model (nominal Jinan scenario)
+#  * greedy evaluation is deterministic  -> must equal the paper's value exactly
+#  * stochastic evaluation (the paper's main metric) uses a new random stream -> must agree within sampling noise
+from nashgat.algos.mappo import AlgoConfig
+if MODE == "REPRODUCE_PAPER":
+    torch.set_num_threads(1)
+    chk = []
+    for d in sorted(TRAFFIC.glob("*/seed*")):
+        c_, ev_ = json.loads((d / "config.json").read_text()), json.loads((d / "eval.json").read_text())
+        seed_ = int(d.name[4:])
+        env_c = TrafficMAEnv(replace(default_env_config(DATA_ROOT, "jinan", "real", horizon=CFG["horizon"], seed=seed_), backend=BACKEND))
+        tr_c = MAPPOTrainer(env_c, AlgoConfig(**c_["algo"]), seed=seed_); tr_c.load(d / "model.pt")
+        set_seed(seed_); g_ = tr_c.evaluate(1, greedy=True)
+        set_seed(seed_); s_ = tr_c.evaluate(CFG["eval_episodes"])
+        chk.append({"run": d.parent.name, "seed": seed_,
+                    "greedy_ATT_paper": ev_["nominal_greedy"]["avg_travel_time"], "greedy_ATT_rerun": g_["avg_travel_time"],
+                    "stoch_ATT_paper": ev_["nominal_stochastic"]["avg_travel_time"], "stoch_ATT_rerun": s_["avg_travel_time"]})
+    chk = pd.DataFrame(chk)
+    chk["greedy_exact"] = np.isclose(chk.greedy_ATT_paper, chk.greedy_ATT_rerun, rtol=1e-6)
+    chk["stoch_diff_%"] = 100 * (chk.stoch_ATT_rerun - chk.stoch_ATT_paper) / chk.stoch_ATT_paper
+    chk.to_csv(RESULTS / "reproduction_check.csv", index=False)
+    display(chk.round(2))
+    print(f"greedy evaluations matching the paper exactly: {chk.greedy_exact.sum()} / {len(chk)}")
+    print(f"stochastic ATT, re-run vs paper: median |diff| {chk['stoch_diff_%'].abs().median():.2f}%, max {chk['stoch_diff_%'].abs().max():.2f}%")
+    if not chk.greedy_exact.all():
+        print("NOTE: a non-exact greedy value means a different floating-point platform changed an action somewhere; "
+              "check the size of the difference.")
+""")
+code("""
 # exact graphical-game study (closed-form exploitability; independent of the simulator)
-gg_rows = []
-for gname, gm in {"npd_3x4": networked_prisoners_dilemma(3, 4), "anticoord_3x4": grid_anti_coordination(3, 4)}.items():
-    for obj, lam in [("independent", 0.), ("welfare", 0.)] + [(o, l) for o in ("welfare_gap", "welfare_mix", "welfare_fullgap") for l in (0.25, 1.0, 4.0)]:
-        for s in range(CFG["gg_seeds"]):
-            res = train_softmax_profile(gm, obj, lam=lam, steps=CFG["gg_steps"], seed=s, init_scale=1.0)
-            gg_rows.append({"game": gname, "objective": obj, "lambda": lam, "seed": s, "welfare": res["welfare"],
-                            "nash_conv": res["nash_conv"], "p_action0_mean": float(res["x"][:, 0].mean())})
-(RESULTS / "graphical_games").mkdir(exist_ok=True)
-gg = pd.DataFrame(gg_rows); gg.to_csv(RESULTS / "graphical_games/final_profiles.csv", index=False)
+if MODE == "REPRODUCE_PAPER":
+    # released profiles (scripts/run_graphical_games.py); Prop. 4 was re-checked numerically in Part 4
+    gg = pd.read_csv(RESULTS / "graphical_games/final_profiles.csv")
+else:
+    gg_rows = []
+    for gname, gm in {"npd_3x4": networked_prisoners_dilemma(3, 4), "anticoord_3x4": grid_anti_coordination(3, 4)}.items():
+        for obj, lam in [("independent", 0.), ("welfare", 0.)] + [(o, l) for o in ("welfare_gap", "welfare_mix", "welfare_fullgap") for l in (0.25, 1.0, 4.0)]:
+            for s in range(CFG["gg_seeds"]):
+                res = train_softmax_profile(gm, obj, lam=lam, steps=CFG["gg_steps"], seed=s, init_scale=1.0)
+                gg_rows.append({"game": gname, "objective": obj, "lambda": lam, "seed": s, "welfare": res["welfare"],
+                                "nash_conv": res["nash_conv"], "p_action0_mean": float(res["x"][:, 0].mean())})
+    (RESULTS / "graphical_games").mkdir(exist_ok=True)
+    gg = pd.DataFrame(gg_rows); gg.to_csv(RESULTS / "graphical_games/final_profiles.csv", index=False)
 display(gg.groupby(["game", "objective", "lambda"])[["welfare", "nash_conv"]].mean().round(3))
 """)
 
@@ -459,6 +527,19 @@ for f in ["training_curves", "congestion_comparison", "tradeoffs", "best_respons
     p = FIGS / f"{f}.png"
     if p.exists():
         print(f); _d(Image(filename=str(p), width=900))
+""")
+code("""
+# REPRODUCE_PAPER: the tables regenerated in this session must equal the released (paper) tables
+if MODE == "REPRODUCE_PAPER":
+    for t in ["summary_all_methods.csv", "stat_tests_nashgat_vs_baselines.csv", "robustness.csv"]:
+        new, old = pd.read_csv(RESULTS / "tables" / t), pd.read_csv(RELEASED / "results/tables" / t)
+        num = [c for c in old.select_dtypes("number").columns if c in new]
+        assert new.shape == old.shape and np.allclose(new[num].to_numpy(float), old[num].to_numpy(float), equal_nan=True, rtol=1e-9), t
+        print(f"{t:40s} identical to the released table ({len(old)} rows)")
+    S_ = pd.read_csv(RESULTS / "tables/summary_all_methods.csv")
+    print("\\nPaper main table (QueueSim, Jinan 3x4, 5 seeds, stochastic evaluation):")
+    display(S_[S_.method.isin(METHODS)][["name", "n", "avg_travel_time_mean", "avg_travel_time_ci_lo", "avg_travel_time_ci_hi",
+                                         "nash_conv_sampled_mean", "comm_per_agent_step_mean"]].round(2))
 """)
 code("""
 # agent communication graph actually used by NashGAT over one evaluation episode (message frequency per edge)

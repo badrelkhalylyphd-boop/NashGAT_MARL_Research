@@ -1,4 +1,4 @@
-"""Execute the Colab notebook locally (FAST_DEMO) in an isolated work directory."""
+"""Execute the Colab notebook locally (in the MODE set in the notebook) in an isolated work directory."""
 import os
 import sys
 import time

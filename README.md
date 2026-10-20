@@ -20,12 +20,21 @@ badrelkhalylyphd@gmail.com · Zouhair.ibnbatouta@gmail.com
 
 ## 1. Run in Google Colab (recommended)
 
-Click the **Open in Colab** badge, choose the mode in the first code cell, then run *Runtime → Run all*.
+Click the **Open in Colab** badge, then run *Runtime → Run all*. The default mode, `REPRODUCE_PAPER`, is the one for reviewers.
 
 | Mode | What it does | Time on Colab |
 |---|---|---|
-| `FAST_DEMO` | functional check: 1 seed, short episodes, all methods, every figure and export | ≈ 15–30 min |
-| `FULL_EXPERIMENT` | the full protocol: 5 seeds × 250 episodes × 3,600 s, robustness suite, best responses | many hours; enable `USE_DRIVE` to keep checkpoints |
+| `REPRODUCE_PAPER` (default) | downloads the 52 released trained models and logs, regenerates every table and figure, and checks them (see below) | ≈ 15–25 min |
+| `FAST_DEMO` | functional check of the training pipeline: 1 seed, short episodes. The numbers are not research results | ≈ 15–30 min |
+| `FULL_EXPERIMENT` | retrains everything with the paper's protocol: 5 seeds × 250 episodes × 3,600 s | many hours; enable `USE_DRIVE` to keep checkpoints |
+
+**How `REPRODUCE_PAPER` verifies the paper.**
+
+1. The regenerated tables must be identical to the released tables. The notebook asserts this.
+2. FixedTime and MaxPressure are recomputed. They are deterministic, so they must match the paper exactly (asserted).
+3. Every released model is re-run. The greedy evaluation is deterministic and must equal the paper's value exactly. The stochastic evaluation uses a new random stream and must agree within sampling noise. On the authors' machine this was about ±2 s on average travel time. The comparison is saved to `reproduction_check.csv`.
+
+Retraining from scratch (`FULL_EXPERIMENT`) gives slightly different numbers, because RL training is not bit-reproducible across hardware and library versions. The conclusions should still hold within the reported confidence intervals.
 
 The notebook is self-contained. It runs these steps in order:
 
